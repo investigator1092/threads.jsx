@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import axios from "axios";
 
 const PostForm = () => {
@@ -19,7 +19,7 @@ const PostForm = () => {
     };
 
     return (
-        <form onsubmit={handleSubmit}>
+        <form onsubmit={handleSubmit} className="mb-5">
             <div>
                 <label>Title:</label>
                 <input
