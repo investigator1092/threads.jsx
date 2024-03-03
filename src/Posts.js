@@ -1,27 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Posts = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    axios.get('http://localhost:8000/posts/')
-      .then(response => {
-        setPosts(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('There was an error!', error);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+const Posts = ({ posts }) => {
   return (
     <div className='mt-5'>
       {posts.map(post => (
