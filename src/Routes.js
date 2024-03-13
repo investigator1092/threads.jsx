@@ -8,7 +8,7 @@ import axios from 'axios';
 const RoutesComponent = () => {
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
+  const fetchPost = () => {
     axios.get('http://localhost:8000/posts')
     .then(response => {
         setPosts(response.data);
@@ -16,13 +16,21 @@ const RoutesComponent = () => {
     .catch(error => {
          console.error('Error fetching posts', error);
      });
+  };
+
+  useEffect(() => {
+    fetchPost();
   }, []);
+
+  const handleNewPost = () => {
+    fetchPost();
+  };
 
   return (
     <Routes>
       <Route path="/" element={
         <>
-          <PostForm onPostCreated={}/>
+          <PostForm onPostCreated={handleNewPost} />
           <Posts posts={posts} />
         </>
       } />
