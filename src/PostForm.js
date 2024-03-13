@@ -15,28 +15,33 @@ const PostForm = ({ onPostCreated }) => {
                 onPostCreated();
             })
             .catch(error => {
-                console.error('There was an error!', error);
+                console.error('Oops!! There was an error!', error);
             });
     };
 
     return (
-        <form onSubmit={handleSubmit} className="mb-5">
+        <form onSubmit={handleSubmit} className="mb-5 flex flex-col">
+            <h1 className="text-3xl font-bold my-4">New Thread</h1>
             <div>
-                <label>Title:</label>
                 <input
                     type="text"
                     value={title}
                     onChange={e => setTitle(e.target.value)}
+                    placeholder="Title"
+                    className="border border-gray-800 rounded my-2"
                 />
             </div>
             <div>
-                <label>Content:</label>
                 <textarea
                     value={content}
                     onChange={e => setContent(e.target.value)}
+                    placeholder="Content"
+                    className="border border-gray-800 rounded p-2 mb-2"
                 />
             </div>
-            <button type="submit">Submit</button>
+            <div className="flex justify-start">
+                <button type="submit" className="border border-gray-800 rounded px-3 py-1">Submit</button>
+            </div>
         </form>
     );
 }

@@ -1,32 +1,16 @@
-// App.js
-import React, { useEffect, useState } from 'react';
-import Posts from './Posts';
-import PostForm from './PostForm';
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import RoutesComponent from './Routes';
+import Header from './Header';
 
 function App() {
-  const [posts, setPosts] = useState([]);
-
-  const fetchPosts = () => {
-    axios.get('http://localhost:8000/posts')
-    .then(response => {
-        setPosts(response.data);
-      })
-    .catch(error => {
-        console.error('Error fetching posts', error);
-      });
-  };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
   return (
-    <div className="App">
-      <h1>Posts</h1>
-      <PostForm onPostCreated={fetchPosts} />
-      <Posts posts={posts} />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <RoutesComponent />
+      </div>
+    </Router>
   );
 }
 
