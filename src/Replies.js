@@ -18,15 +18,15 @@ const Replies = () => {
   }, [threadId]);
 
   const handleReplyPosted = (newReply) => {
-    setReplies([...replies, newReply]);
+    setReplies([newReply, ...replies]);
   };
 
   return (
     <div>
+      <ReplyForm threadId={threadId} onReplyPosted={handleReplyPosted} />
       {replies.map(reply => (
         <div key={reply.id} className='mb-1 p-2 border border-gray-800 rounded'>{reply.content}</div>
       ))}
-      <ReplyForm threadId={threadId} onReplyPosted={handleReplyPosted} />
     </div>
   );
 };
