@@ -9,7 +9,7 @@ const RoutesComponent = () => {
   const [posts, setPosts] = useState([]);
 
   const fetchPost = () => {
-    axios.get('http://localhost:8000/posts')
+    axios.get(`${process.env.REACT_APP_API_URL}/posts`)
     .then(response => {
         setPosts(response.data);
     })
