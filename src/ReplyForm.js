@@ -6,7 +6,7 @@ const ReplyForm = ({ threadId, onReplyPosted }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post(`http://localhost:8000/posts/${threadId}/replies`, { content })
+        axios.post(`${process.env.REACT_APP_API_URL}/posts/${threadId}/replies`, { content })
           .then(response => {
                 if (onReplyPosted) onReplyPosted(response.data);
                 setContent('');
