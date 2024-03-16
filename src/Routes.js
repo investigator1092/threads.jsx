@@ -9,7 +9,7 @@ const RoutesComponent = () => {
   const [posts, setPosts] = useState([]);
 
   const fetchPost = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/posts`)
+    axios.get(`https://threads-jsx-api-dd13d6652d76.herokuapp.com/posts`)
     .then(response => {
         setPosts(response.data);
     })
