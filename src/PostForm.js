@@ -7,7 +7,7 @@ const PostForm = ({ onPostCreated }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post(`https://threads-jsx-api-dd13d6652d76.herokuapp.com/posts`, { title, content })
+        axios.post(`${process.env.REACT_APP_API_URL}/posts`, { title, content })
             .then(response => {
                 // console.log(response.data);
                 setTitle('');
